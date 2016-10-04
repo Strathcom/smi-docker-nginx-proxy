@@ -1,5 +1,5 @@
-FROM jwilder/nginx-proxy:latest
-
-# MAINTAINER Mike du Heaume <mduheaume@strathcom.com>
-
-RUN sed -i 's/server_names_hash_bucket_size 64;/server_names_hash_bucket_size 128;/g' /etc/nginx/nginx.conf
+FROM jwilder/nginx-proxy:0.4.0
+RUN { \
+      echo 'server_tokens off;'; \
+      echo 'client_max_body_size 50m;'; \
+    } > /etc/nginx/conf.d/smi_proxy.conf
